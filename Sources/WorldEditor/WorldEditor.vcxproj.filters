@@ -501,12 +501,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="ReadMe.txt">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Data\SED_TipOfTheDay.txt">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="resource.h">
       <Filter>Header Files</Filter>
     </CustomBuild>

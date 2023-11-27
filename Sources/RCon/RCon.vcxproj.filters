@@ -51,6 +51,5 @@
     <CustomBuild Include="res\RCon.rc2">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

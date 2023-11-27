@@ -13,12 +13,6 @@
       <UniqueIdentifier>{f483e665-b347-4776-8c97-9c8eae695c22}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
-    <Filter Include="Scripts">
-      <UniqueIdentifier>{d1fedab4-998c-44f8-86b5-3863df5d8a73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Texts">
-      <UniqueIdentifier>{332d9393-d918-4caf-86b2-2e63c2cca9bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\GUI headers">
       <UniqueIdentifier>{b1fe2cd0-889c-48dd-897c-cdbbdcb0a131}</UniqueIdentifier>
     </Filter>
@@ -422,51 +416,6 @@
     </CustomBuild>
     <CustomBuild Include="Splash.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\Menu\ApplyShadowmaps.ini">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\Menu\ApplyTextures.ini">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\Menu\ApplyVideo.ini">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\CustomOptions\GameOptions.cfg">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\Menu\GameOptions.cfg">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\CustomOptions\GameOptions.des">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\CustomOptions\GFX-AdvancedRendering.cfg">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\CustomOptions\GFX-AdvancedRendering.des">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\CustomOptions\PredictionOptions.cfg">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\CustomOptions\PredictionOptions.des">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\Menu\RenderingOptions.cfg">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Scripts\Addons\SFX-AutoAdjust.des">
-      <Filter>Scripts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Data\Credits.txt">
-      <Filter>Texts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Data\Credits_Demo.txt">
-      <Filter>Texts</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Flesh\Data\Credits_End.txt">
-      <Filter>Texts</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

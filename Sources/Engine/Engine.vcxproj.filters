@@ -1424,7 +1424,5 @@
     <CustomBuild Include="Classes\PlayerEntity.es">
       <Filter>Entity Class Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ReadMe.txt" />
-    <CustomBuild Include="..\..\Flesh\Help\ShellSymbols.txt" />
   </ItemGroup>
 </Project>

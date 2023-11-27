@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <SE1Platform Condition="'$(PlatformShortName)'=='x86'  Or '$(PlatformShortName)'=='Win32'">x86</SE1Platform>
+    <SE1Platform Condition="'$(PlatformShortName)'!='x86' And '$(PlatformShortName)'!='Win32'">x64</SE1Platform>
+    <FullConfigurationName>$(Configuration).$(SE1Platform)</FullConfigurationName>
+
+    <BinDir>$(SolutionDir)Bin\$(FullConfigurationName)\</BinDir>
+    <ObjDir>$(SolutionDir)Obj\$(FullConfigurationName)\$(ProjectName)\</ObjDir>
+
+    <DX8InclPath>$(SolutionDir)..\Tools.Win32\Libraries\DX8SDK\Include\</DX8InclPath>
+    <DX8LibPath>$(SolutionDir)..\Tools.Win32\Libraries\DX8SDK\Lib\</DX8LibPath>
+
+    <SE1Exe>$(BinDir);$(SolutionDir)..\Tools.Win32;</SE1Exe>
+    <SE1Incl>$(SolutionDir);$(ProjectDir);$(DX8InclPath);</SE1Incl>
+    <SE1Libs>$(BinDir);$(DX8LibPath);</SE1Libs>
+
+    <SE1GenericPreproc>DIRECT3D_VERSION=0x0800;</SE1GenericPreproc>
+  </PropertyGroup>
+</Project>

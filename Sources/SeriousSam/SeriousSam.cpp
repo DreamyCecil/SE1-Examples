@@ -1213,7 +1213,7 @@ int SubMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int 
 
 	if (CreateProcessA(strCmd,strParam,NULL,NULL,FALSE,CREATE_DEFAULT_ERROR_MODE,NULL,NULL,&cif,&pi) == FALSE)
 	{
-	  MessageBox(0, L"error launching the Mod!\n", L"Serious Sam", MB_OK|MB_ICONERROR);		
+	  MessageBoxA(0, "error launching the Mod!\n", "Serious Sam", MB_OK|MB_ICONERROR);		
 	}
   }
   // invoke quit screen if needed

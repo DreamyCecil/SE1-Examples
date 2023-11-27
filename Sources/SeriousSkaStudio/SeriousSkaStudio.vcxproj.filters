@@ -262,6 +262,5 @@
     <CustomBuild Include="SeriousSkaStudio.clw">
       <Filter>Wizard Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

@@ -285,9 +285,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="ReadMe.txt">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="res\animcont.bmp">
       <Filter>Resource Files</Filter>
     </CustomBuild>

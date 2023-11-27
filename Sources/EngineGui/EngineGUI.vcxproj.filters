@@ -87,6 +87,5 @@
     <CustomBuild Include="Graphics.clw">
       <Filter>Wizard Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

@@ -85,7 +85,7 @@ public:
 
 
 // ------------------------------------ Ogg Vorbis
-#include <vorbis\vorbisfile.h>  // we define needed stuff ourselves, and ignore the rest
+#include <libvorbis/include/vorbis/vorbisfile.h>  // we define needed stuff ourselves, and ignore the rest
 
 // vorbis vars
 extern BOOL _bOVEnabled = FALSE;
