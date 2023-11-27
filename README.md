@@ -1,78 +1,55 @@
-# Serious Engine
-========================
+# Serious Engine 1 Examples
 
-This is the source code for Serious Engine v.1.10, including the following projects:
+> This is a fork of Croteam's Serious Engine 1.10 that contains various examples of simple mods for educational purposes.
 
-* `DedicatedServer`
-* `Ecc` The *Entity Class Compiler*, a custom build tool used to compile *.es files
-* `Engine` Serious Engine 1.10
-* `EngineGUI` Common GUI things for game tools
-* `EntitiesMP` All the entity logic
-* `GameGUIMP` Common GUI things for game tools
-* `GameMP` All the game logic
-* `Modeler` Serious Modeler
-* `RCon` Used to connect to servers using an admin password
-* `SeriousSam` The main game executable
-* `SeriousSkaStudio` Serious Ska Studio
-* `WorldEditor` Serious Editor
-* `DecodeReport` Used to decode crash *.rpt files
-* `Depend` Used to build a list of dependency files based on a list of root files
-* `LWSkaExporter` Exporter for use in LightWave
-* `MakeFONT` Used for generating *.fnt files
-* `Shaders` Compiled shaders
-* `GameAgent` The serverlist masterserver written in Python
-* `libogg`, `libvorbis` Third party libraries used for playing OGG-encoded ingame music (see http://www.vorbis.com/ for more information)
+Each example sits under its own branch and the [**repository's wiki**](https://github.com/DreamyCecil/SE1-Examples/wiki) contains detailed explanation of each example and its commits on their own respective pages.
 
-These have been modified to run correctly under the recent version of Windows. (Tested: Win7 x64, Win8 x64, Win8.1 x64)
+- These examples are aimed towards beginners that wish to understand how certain features can be designed and implemented.
+- Some examples require you to have at least some understanding of the Entity Source (`.es`) syntax.
+- The examples for `EntitiesMP`, `GameGUIMP` and `GameMP` projects can also be applied to mods based on old Serious Engine 1 SDKs for **TFE** (v1.05) and **TSE** (v1.05 or v1.07).
+- If you wish to see an example of a desired feature, you can leave a suggestion by [**creating a new issue**](https://github.com/DreamyCecil/SE1-Examples/issues).
+  - **Do not** suggest features that are either too complex or too specific to some project. The examples are supposed to be generic and easy to understand.
 
-Building
---------
+# Project files
 
-To build Serious Engine 1, you'll need Visual Studio 2013 or 2015, Professional or Community edition ( https://www.visualstudio.com/post-download-vs?sku=community ).
+The code and project files in this repository are not in perfect condition and only exist purely for testing example code.
 
-Do not use spaces in the path to the solution.
+If you're looking for a suitable repository for your projects, you can take a look at [**the most notable SE1 forks here**](https://github.com/DreamyCecil/Serious-Engine/wiki/Serious-Engine-1-versions-&-forks#110-forks) and pick one for yourself.
 
-Once you've installed Visual Studio and (optionally) DirectX8 SDK, you can build the engine solution (`/Sources/All.sln`). Press F7 or Build -> Build solution. The libraries and executables will be put into `\Bin\` directory (or `\Bin\Debug\` if you are using the Debug configuration).
+### Engine components
+- `DedicatedServer` - Dedicated server application for hosting multiplayer game
+- `Ecc` - Entity Class Compiler for compiling entity source files (`*.es`)
+- `Engine` - Serious Engine 1.10
+- `EngineGUI` - Common GUI components for game tools
+- `EntitiesMP` - All the entity logic
+- `GameGUIMP` - Specific GUI components for game tools
+- `GameMP` - Module for handling basic game logic
+- `SeriousSam` - The main game executable
+- `Shaders` - Compiled shaders for SKA models
 
-Optional features
------------------
+### Engine tools
+- `DecodeReport` - Tool for decoding crash report files (`*.rpt`)
+- `Depend` - Tool for generating a list of dependency files based on a list of root files
+- `MakeFONT` - Tool for generating font files for the game (`*.fnt`)
+- `Modeler` - Serious Modeler application for creating and configuring models with vertex animations
+- `RCon` - Remote console application for connecting to servers using an admin password
+- `SeriousSkaStudio` - Serious SKA Studio application for creating and configuring models with skeletal animations
+- `WorldEditor` - Serious Editor application for creating in-game levels
 
-DirectX support is disabled by default. If you need DirectX support you'll have to download DirectX8 SDK (headers & libraries) ( http://files.seriouszone.com/download.php?fileid=759 or https://www.microsoft.com/en-us/download/details.aspx?id=6812 ) and then enable the SE1_D3D switch for all projects in the solution (Project properties -> Configuration properties -> C/C++ -> Preprocessor -> Preprocessor definitions -> Add "SE1_D3D" for both Debug and Release builds). You will also need to make sure the DirectX8 headers and libraries are located in the following folders (make the folder structure if it's not existing yet):
-* `/Tools.Win32/Libraries/DX8SDK/Include/..`
-* `/Tools.Win32/Libraries/DX8SDK/Lib/..`
+# Building and running
 
-MP3 playback is disabled by default. If you need this feature, you will have to copy amp11lib.dll to the '\Bin\' directory (and '\Bin\Debug\' for MP3 support in debug mode). The amp11lib.dll is distributed with older versions of Serious Sam: The First Encounter.
+To build Serious Engine 1 examples, you will need **Visual Studio 2013** or later.
 
-3D Exploration support is disabled in the open source version of Serious Engine 1 due to copyright issues. In case if you need to create new models you will have to either use editing tools from any of the original games, or write your own code for 3D object import/export.
+When running a selected project, make sure that its project settings under **Debugging** are setup correctly:
+- Command: `$(PostBuildCopyDir)$(TargetFileName)`
+- Working Directory: `$(SolutionDir)..\`
 
-IFeel support is disabled in the open source version of Serious Engine 1 due to copyright issues. In case if you need IFeel support you will have to copy IFC22.dll and ImmWrapper.dll from the original game into the `\Bin\` folder.
+# License
 
-Running
--------
+Serious Engine is licensed under the GNU GPL v2 (see `LICENSE` file).
 
-This version of the engine comes with a set of resources (`\SE1_10.GRO`) that allow you to freely use the engine without any additional resources required. However if you want to open or modify levels from Serious Sam Classic: The First Encounter or The Second Encounter (including most user-made levels), you will have to copy the game's resources (.GRO files) into the engine folder. You can buy the original games on Steam, as a part of a bundle with Serious Sam Revolution ( http://store.steampowered.com/app/227780 )
+Some of the code included with the engine sources under `Sources/` is not licensed under the GNU GPL v2:
 
-When running a selected project, make sure its project settings on Debugging is set to the right command:
-* For debug:
-    $(SolutionDir)..\Bin\Debug\$(TargetName).exe`
-* For release:
-    $(SolutionDir)..\Bin\$(TargetName).exe`
-And its working directory:
-    $(SolutionDir)..\
-
-Common problems
----------------
-
-Before starting the build process, make sure you have a "Temp" folder in your development directory. If it doesn't exist, create it.
-SeriousSkaStudio has some issues with MFC windows that can prevent the main window from being displayed properly.
-
-License
--------
-
-Serious Engine is licensed under the GNU GPL v2 (see LICENSE file).
-
-Some of the code included with the engine sources is not licensed under the GNU GPL v2:
-
-* zlib (located in `Sources/Engine/zlib`) by Jean-loup Gailly and Mark Adler
-* LightWave SDK (located in `Sources/LWSkaExporter/SDK`) by NewTek Inc.
-* libogg/libvorbis (located in `Sources/libogg` and `Sources/libvorbis`) by Xiph.Org Foundation
+- **libogg** & **libvorbis** (`libogg/`, `libvorbis/`) by Xiph.Org Foundation
+- **LightWave SDK** (`LWSkaExporter/SDK/`) by NewTek Inc.
+- **zlib** (`Engine/zlib/`) by Jean-loup Gailly and Mark Adler
