@@ -128,9 +128,9 @@ TIME _tmLastHeartbeat = 0;
 CDynamicStackArray<CServerRequest> ga_asrRequests;
 
 //extern CTString ga_strServer = "master1.croteam.org";
-extern CTString ga_strServer = "master1.42amsterdam.net";
+extern CTString ga_strServer = "master.333networks.com";
 //extern CTString ga_strMSLegacy = "master1.croteam.org";
-extern CTString ga_strMSLegacy = "42amsterdam.net";
+extern CTString ga_strMSLegacy = "master.333networks.com";
 
 extern BOOL ga_bMSLegacy = TRUE;
 //BOOL ga_bMSLegacy = FALSE;
@@ -158,13 +158,14 @@ void _initializeWinsock(void)
     return;
   }
 
+  // [Cecil] TEMP: Disable interactions with master server for testing purposes
   // get the host IP
-  hostent* phe;
-  if(!ga_bMSLegacy) {
+  hostent* phe = NULL;
+  /*if(!ga_bMSLegacy) {
     phe = gethostbyname(ga_strServer);
   } else {
     phe = gethostbyname(ga_strMSLegacy);
-  }
+  }*/
   // if we couldn't resolve the hostname
   if(phe == NULL) {
     // report and stop
