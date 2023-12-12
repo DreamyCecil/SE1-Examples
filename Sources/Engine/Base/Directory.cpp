@@ -106,7 +106,8 @@ ENGINE_API void MakeDirList(
 {
   afnmDir.PopAll();
   BOOL bRecursive = ulFlags&DLI_RECURSIVE;
-  BOOL bSearchCD  = ulFlags&DLI_SEARCHCD;
+  // [Cecil] TEMP: Utilize CD path for mounting another game directory
+  BOOL bSearchCD  = TRUE; //ulFlags&DLI_SEARCHCD;
 
   // make one temporary array
   CDynamicStackArray<CTFileName> afnm;
