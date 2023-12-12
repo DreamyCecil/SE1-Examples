@@ -67,10 +67,25 @@ void CNetworkStartMenu::Initialize_t(void)
   gm_mgLevel.mg_pActivatedFunction = NULL;
   gm_lhGadgets.AddTail(gm_mgLevel.mg_lnNode);
 
+  // [Cecil] Create entries for each player count option (other than "1")
+  const INDEX ctMaxPlayersEntries = NET_MAXGAMEPLAYERS - 1;
+
+  if (astrMaxPlayersRadioTexts == NULL) {
+    astrMaxPlayersRadioTexts = new CTString[ctMaxPlayersEntries];
+
+    // [Cecil] Just print numbers, no need to translate them like before
+    for (INDEX i = 0; i < ctMaxPlayersEntries; i++) {
+      astrMaxPlayersRadioTexts[i].PrintF("%d", i + 2);
+    }
+  }
+
   // max players trigger
   TRIGGER_MG(gm_mgMaxPlayers, 5,
     gm_mgLevel, gm_mgWaitAllPlayers, TRANS("Max players:"), astrMaxPlayersRadioTexts);
   gm_mgMaxPlayers.mg_strTip = TRANS("choose maximum allowed number of players");
+
+  // [Cecil] Set amount of entries in the dynamic array
+  gm_mgMaxPlayers.mg_ctTexts = ctMaxPlayersEntries;
 
   // wait all players trigger
   TRIGGER_MG(gm_mgWaitAllPlayers, 6,
@@ -116,7 +131,9 @@ void CNetworkStartMenu::StartMenu(void)
   _pShell->SetINDEX("gam_iStartMode", CSessionProperties::GM_COOPERATIVE);
 
   INDEX ctMaxPlayers = _pShell->GetINDEX("gam_ctMaxPlayers");
-  if (ctMaxPlayers<2 || ctMaxPlayers>16) {
+
+  // [Cecil] Use macro value for the upper player limit
+  if (ctMaxPlayers<2 || ctMaxPlayers>NET_MAXGAMEPLAYERS) {
     ctMaxPlayers = 2;
     _pShell->SetINDEX("gam_ctMaxPlayers", ctMaxPlayers);
   }
