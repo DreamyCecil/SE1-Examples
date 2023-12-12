@@ -26,8 +26,21 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Network/MessageDispatcher.h>
 #include <Engine/Templates/StaticArray.h>
 
+// [Cecil] NOTE: Supported amount of individual clients for CCommunicationInterface; used in:
+// - cm_aciClients (0 is always the local server client)
+#define SERVER_CLIENTS 32 // [Cecil] 16 -> 32
+
+// [Cecil] NOTE: Always synced with SERVER_CLIENTS; used in:
+// - CServer::srv_assoSessions
 #define NET_MAXGAMECOMPUTERS SERVER_CLIENTS    // max overall computers in game
-#define NET_MAXGAMEPLAYERS   16                // max overall players in game
+
+// [Cecil] NOTE: Max overall players in game, can be higher than NET_MAXGAMECOMPUTERS; used in:
+// - CSessionState::ses_apltPlayers
+// - CServer::srv_aplbPlayers
+// - CNetwork::ChangeLevel_internal()
+// - CEntity::GetMaxPlayers()
+#define NET_MAXGAMEPLAYERS NET_MAXGAMECOMPUTERS // [Cecil] 16 -> NET_MAXGAMECOMPUTERS
+
 #define NET_MAXLOCALPLAYERS   4                // max players on a single machine
 
 #define NET_WAITMESSAGE_DELAY     50       // wait time between receive message attempts
