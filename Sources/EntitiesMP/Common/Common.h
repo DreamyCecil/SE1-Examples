@@ -317,3 +317,15 @@ void SpawnHitTypeEffect(CEntity *pen, enum BulletHitType bhtType, BOOL bSound, F
   FLOAT3D vIncommingBulletDir, FLOAT3D vDistance);
 
 #define FRndIn(a, b) (a + FRnd()*(b - a))
+
+// [Cecil] Calculate horizontal FOV according to the aspect ratio
+inline void AdjustHFOV(FLOAT fScreenW, FLOAT fScreenH, FLOAT &fHFOV) {
+  // Get square ratio based off 4:3 resolution (4:3 = 1.0 ratio; 16:9 = 1.333 etc.)
+  FLOAT fSquareRatio = (fScreenW / fScreenH) * (3.0f / 4.0f);
+
+  // Take current FOV angle and apply square ratio to it
+  FLOAT fVerticalAngle = Tan(fHFOV * 0.5f) * fSquareRatio;
+
+  // 90 FOV on 16:9 resolution will become 106.26...
+  fHFOV = 2.0f * ATan(fVerticalAngle);
+};

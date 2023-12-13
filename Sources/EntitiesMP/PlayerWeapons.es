@@ -990,6 +990,12 @@ functions:
         plWeaponMirror.pl_OrientationAngle(3) = -plWeaponMirror.pl_OrientationAngle(3);
       }
       ((CPerspectiveProjection3D &)prMirror).FOVL() = AngleDeg(wpn_fFOV[iWeaponData]);
+
+      // [Cecil] Adjust FOV for any aspect ratio
+      if (!_bClassicsPatch) {
+        AdjustHFOV(pdp->GetWidth(), pdp->GetHeight(), ((CPerspectiveProjection3D &)prMirror).FOVL());
+      }
+
       CAnyProjection3D apr;
       apr = prMirror;
       Stereo_AdjustProjection(*apr, iEye, 0.1f);
@@ -1022,6 +1028,11 @@ functions:
     prProjection.DepthBufferNearL() = 0.0f;
     prProjection.DepthBufferFarL() = 0.1f;
     ((CPerspectiveProjection3D &)prProjection).FOVL() = AngleDeg(wpn_fFOV[iWeaponData]);
+
+    // [Cecil] Adjust FOV for any aspect ratio
+    if (!_bClassicsPatch) {
+      AdjustHFOV(pdp->GetWidth(), pdp->GetHeight(), ((CPerspectiveProjection3D &)prProjection).FOVL());
+    }
 
     CAnyProjection3D apr;
     apr = prProjection;

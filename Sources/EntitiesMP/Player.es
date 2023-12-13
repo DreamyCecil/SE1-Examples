@@ -2421,6 +2421,12 @@ functions:
     } else {
       prPerspectiveProjection.FOVL() = aFOV;
     }
+
+    // [Cecil] Adjust FOV for any aspect ratio
+    if (!_bClassicsPatch) {
+      AdjustHFOV(pdp->GetWidth(), pdp->GetHeight(), prPerspectiveProjection.FOVL());
+    }
+
     prPerspectiveProjection.ScreenBBoxL() = FLOATaabbox2D(
       FLOAT2D(0.0f, 0.0f),
       FLOAT2D((FLOAT)pdp->GetWidth(), (FLOAT)pdp->GetHeight())
