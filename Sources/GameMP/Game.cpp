@@ -2088,6 +2088,14 @@ static void MakeSplitDrawports(enum CGame::SplitScreenCfg ssc, INDEX iCount, CDr
   }
 }
 
+// [Cecil] Dynamically adjust aspect ratio for a drawport in vanilla game
+static void AdjustAspectRatio(CDrawPort *pdp) {
+  if (!_bClassicsPatch) {
+    // Get inverse aspect ratio (e.g. 0.5625 for 16:9) and multiply it by 4:3 ratio
+    pdp->dp_fWideAdjustment = ((FLOAT)pdp->GetHeight() / (FLOAT)pdp->GetWidth()) * (4.0f / 3.0f);
+  }
+};
+
 // this is used to make sure that the thumbnail is never saved with an empty screen
 static BOOL _bPlayerViewRendered = FALSE;
 
@@ -2233,6 +2241,8 @@ void CGame::GameRedrawView( CDrawPort *pdpDrawPort, ULONG ulFlags)
     {for (INDEX i=0; i<ctViewers; i++) {
       CDrawPort *pdp = apdpDrawPorts[i];
       if (pdp!=NULL && pdp->Lock()) {
+        // [Cecil] Dynamically adjust aspect ratio
+        AdjustAspectRatio(pdp);
 
         // if there is a viewer
         if (apenViewers[i]!=NULL) {
@@ -2821,6 +2831,9 @@ void CGame::LCDSetDrawport(CDrawPort *pdp)
   }
   
   ::LCDSetDrawport(pdp);
+
+  // [Cecil] Dynamically adjust aspect ratio
+  AdjustAspectRatio(pdp);
 }
 void CGame::LCDDrawBox(PIX pixUL, PIX pixDR, PIXaabbox2D &box, COLOR col)
 {
