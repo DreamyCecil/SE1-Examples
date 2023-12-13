@@ -75,6 +75,9 @@ DECL_DLL extern BOOL cmp_bUpdateInBackground;
 // set for initial calling computer without rendering game
 DECL_DLL extern BOOL cmp_bInitialStart;
 
+// [Cecil] Check if Classics Patch is used with this mod
+// Check out Classics Patch: https://github.com/SamClassicPatch
+DECL_DLL extern BOOL _bClassicsPatch;
 
 #endif  /* include-once check. */
 

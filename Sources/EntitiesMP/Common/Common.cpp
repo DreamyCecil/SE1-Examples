@@ -28,6 +28,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Player/SeriousSam/Head.h"
 extern INDEX ent_bReportBrokenChains;
 
+// [Cecil] Classics Patch isn't used by default
+BOOL _bClassicsPatch = FALSE;
+
 void CCompMessageID::Clear(void)
 {
   cmi_fnmFileName.Clear();
