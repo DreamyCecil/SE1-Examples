@@ -785,7 +785,8 @@ extern void DrawHUD( const CPlayer *penPlayerCurrent, CDrawPort *pdpCurrent, BOO
   _pDP        = pdpCurrent;
   _pixDPWidth   = _pDP->GetWidth();
   _pixDPHeight  = _pDP->GetHeight();
-  _fCustomScaling     = hud_fScaling;
+  // [Cecil] Adjust scaling based on aspect ratio
+  _fCustomScaling = hud_fScaling * _pDP->dp_fWideAdjustment;
   _fResolutionScaling = (FLOAT)_pixDPWidth /640.0f;
   _colHUD     = 0x4C80BB00;
   _colHUDText = SE_COL_ORANGE_LIGHT;
@@ -1013,9 +1014,10 @@ extern void DrawHUD( const CPlayer *penPlayerCurrent, CDrawPort *pdpCurrent, BOO
     fCol -= fAdvUnitS;
   }
 
+  // [Cecil] Readjust scaling based on aspect ratio
+  _fCustomScaling = hud_fScaling * _pDP->dp_fWideAdjustment;
 
   // if weapon change is in progress
-  _fCustomScaling = hud_fScaling;
   hud_tmWeaponsOnScreen = Clamp( hud_tmWeaponsOnScreen, 0.0f, 10.0f);   
   if( (_tmNow - _penWeapons->m_tmWeaponChangeRequired) < hud_tmWeaponsOnScreen) {
     // determine number of weapons that player has
