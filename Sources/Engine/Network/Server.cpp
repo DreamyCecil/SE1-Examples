@@ -1357,7 +1357,8 @@ void CServer::Handle(INDEX iClient, CNetworkMessage &nmMessage)
       if (bSaved) {
         // read client index
         INDEX iPlayer = 0;
-        nmMessage.ReadBits(&iPlayer, 4);
+        // [Cecil] NOTE: Amount of bits for fitting player index (4 by default for 16 different players)
+        nmMessage.ReadBits(&iPlayer, NET_MAXPLAYERS_EXP);
         CPlayerBuffer &plb = srv_aplbPlayers[iPlayer];
         // if the player is not on that client
         if (plb.plb_iClient!=iClient) {

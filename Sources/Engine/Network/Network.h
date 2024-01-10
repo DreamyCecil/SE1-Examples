@@ -26,9 +26,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Network/MessageDispatcher.h>
 #include <Engine/Templates/StaticArray.h>
 
+// [Cecil] NOTE: Exponent for the maximum amount of players in base 2
+#define NET_MAXPLAYERS_EXP 5 // 2^5 = 32 max players
+
 // [Cecil] NOTE: Supported amount of individual clients for CCommunicationInterface; used in:
 // - cm_aciClients (0 is always the local server client)
-#define SERVER_CLIENTS 32 // [Cecil] 16 -> 32
+#define SERVER_CLIENTS (1 << NET_MAXPLAYERS_EXP) // [Cecil] 16 -> (1 << NET_MAXPLAYERSEXP)
 
 // [Cecil] NOTE: Always synced with SERVER_CLIENTS; used in:
 // - CServer::srv_assoSessions
